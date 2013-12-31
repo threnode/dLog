@@ -1,0 +1,75 @@
+<head>
+  <title>dLog</title>
+</head>
+
+<body>
+
+
+
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+	    <div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		    <span class="sr-only">Toggle navigation</span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand" href="#">dLog</a>
+	    </div>
+	    <div class="navbar-collapse collapse">
+	    	{{loginButtons}}
+	    </div><!--/.navbar-collapse -->
+	</div>
+</div>
+
+ 
+<div class="container">
+    <div class="intro">
+        {{#if currentUser}}
+		{{> addItem}}
+		{{/if}}
+		{{#unless currentUser}}
+				{{> banner}}
+		{{/unless}}
+    </div>
+</div>
+   
+
+
+
+</body>
+
+<template name="banner">
+     <h1>dLog prototype</h1>
+     <p class="lead">Activity tracker - log anything. Version 0.0.1.</p>
+</template>
+
+<template name="addItem">
+ 
+  <form class="form-horizontal">
+  <fieldset>
+    <legend>New Data</legend>
+    <div class="control-group">
+    <label class="control-label" for="inputEmail">Time taken</label>
+	    <div class="controls">
+	      <input type="number" min="0" step="5" id="inputEmail" placeholder="total minutes" required="true">
+	    </div>
+    </div>
+    <div class="control-group">
+	    <label class="control-label">
+	      <div class="controls">
+	      	<div class="btn-group" data-toggle="buttons-radio">
+			  <button type="button" class="btn btn-primary active" data-toggle="button">Today</button>
+			  <button type="button" class="btn btn-primary">Past date</button>
+			</div>
+	    </label>
+	    </div>
+    </div>
+    <button type="submit" class="btn">Save</button>
+  </fieldset>
+</form>
+</template>

@@ -1,0 +1,23 @@
+/* CSS declarations go here */
+#main {
+	margin: 20px;
+}
+.intro {
+	padding: 80px 15px;
+	text-align: center;
+}
+.login-text-and-button > div {
+	float: left;
+}
+.login-display-name {
+	padding: 5px 10px;
+	color: #666;
+}
+
+#login-buttons {
+	padding-top: 10px;
+	float: right;
+}
+.login-button {
+	text-shadow: none;
+}
