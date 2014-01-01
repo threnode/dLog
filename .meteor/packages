@@ -10,5 +10,9 @@ preserve-inputs
 accounts-google
 jquery
 bootstrap3-less
-bootstrap-3
 accounts-ui-unstyled
+coffeescript
+less
+bootstrap-3
+backbone
+moment

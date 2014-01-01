@@ -1,0 +1,120 @@
+<template name="newData">
+
+	<div id="newData" class="new">
+		<h1>New data</h1>
+
+
+		<form id="new-data-form" class="form-inline">
+
+			<fieldset id="newdata_time" class="temporal">
+    			<legend>Time</legend>
+
+			    <div id="time-selection" class="btn-group btn-group-sm " data-toggle="buttons">
+				    <label class="btn btn-default date-btn" id="time_length" name="Time by length">
+				    	<input type="radio"> length
+					</label>
+					<label class="btn btn-default date-btn" id="time_actual" name="Time by actual">
+						<input type="radio"> actual
+					</label>
+					<label class="btn btn-default date-btn" id="time_simplelog" name="Simple log">
+						<input type="radio"> simple log
+					</label>
+			    </div>
+
+			    <div id="newdata_time_length" data-ref="time_length" class="form-group date-form-group">
+				    <div class="col-sm-4 input-group-sm">
+
+				      <input type="number" class="form-control" min="0" step="5" id="total-length" placeholder="minutes" required="true">
+				      
+				    </div>
+
+			    </div>
+
+			    <div id="newdata_time_actual" data-ref="time_actual" class="form-group time date-form-group">
+				    <div class="col-sm-4 input-group-sm">
+
+				      <input type="time" class="form-control" id="total-length" required="true" value="12:00">
+				    </div>
+				    <label id="end-time-label" class="col-sm-1 control-label" for="total-length">to</label>
+				    <div class="col-sm-4 input-group-sm">
+
+				      <input type="time" class="form-control" id="total-length" required="true" value="12:00">
+				    </div>
+
+			    </div>
+
+			    <div id="newdata_time_simplelog" data-ref="time_simplelog" class="form-group date-form-group">
+			    	<label class="control-label" >action only - no time/duration logged</label>
+				</div>
+    
+			</fieldset>
+
+			<fieldset id="newdata_date" class="temporal">
+			    <legend>Date</legend>
+
+			    <div id="date-selection" class="btn-group btn-group-sm " data-toggle="buttons">
+				    <label class="btn btn-default date-btn" id="date_today" name="Today's date">
+				    	<input type="radio"> today
+					</label>
+					<label class="btn btn-default date-btn" id="date_yesterday" name="Yesterday">
+						<input type="radio"> yesterday
+					</label>
+					<label class="btn btn-default date-btn" id="date_other" name="Other">
+						<input type="radio"> select date
+					</label>
+			    </div>
+
+			     <div id="newdata_date_today" data-ref="date_today" class="form-group date-form-group">
+			    	<label class="col-sm-10 control-label date" >{{today}}</label>
+				</div>
+				 <div id="newdata_date_yesterday" data-ref="date_yesterday" class="form-group date-form-group">
+			    	<label class="col-sm-10 control-label date" >{{yesterday}}</label>
+				</div>
+				<div id="newdata_date_other" data-ref="date_other" class="form-group date-form-group">
+			    	 <div class="col-sm-5 input-group-sm">
+			    	 	<input type="date" class="form-control" value="{{today2}}">
+			    	 </div>
+				</div>
+
+			</fieldset>
+
+			<fieldset id="newdata_details">
+				<legend>Metadata</legend>
+
+
+				<div class="btn-meta-group btn-group">
+					<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" data-toggle="dropdown">
+						Select catagory <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">new</a></li>
+						<li class="divider"></li>
+						<li><a href="#">art</a></li>
+						<li><a href="#">learning</a></li>
+						<li><a href="#">reading</a></li>
+					</ul>
+				</div>
+				<div class="btn-meta-group btn-group">
+					<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" disabled="disabled" data-toggle="dropdown">
+						Select activity <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">new</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</div>
+
+
+
+			</fieldset>
+
+  			<button id="save" type="submit" class="btn btn-success" name="Save new data">Save</button>
+		
+		</form>
+
+
+	</div>
+</template>
