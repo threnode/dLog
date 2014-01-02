@@ -14,5 +14,5 @@ accounts-ui-unstyled
 coffeescript
 less
 bootstrap-3
-backbone
 moment
+bootstrap-3-timepicker

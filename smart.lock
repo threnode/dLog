@@ -10,6 +10,9 @@
       },
       "moment": {
         "version": "2.2.1"
+      },
+      "bootstrap-3-timepicker": {
+        "version": "0.2.5"
       }
     },
     "packages": {
@@ -27,6 +30,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.2.1",
         "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
+      },
+      "bootstrap-3-timepicker": {
+        "git": "https://github.com/ianserlin/meteor-bootstrap-timepicker.git",
+        "tag": "v0.2.5",
+        "commit": "12dd7c5dd0e67f0f307e7c5aefed74777be808f1"
       }
     }
   }

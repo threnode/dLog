@@ -2,6 +2,7 @@
   "packages": {
     "bootstrap3-less": {},
     "bootstrap-3": {},
-    "moment": {}
+    "moment": {},
+    "bootstrap-3-timepicker": {}
   }
 }

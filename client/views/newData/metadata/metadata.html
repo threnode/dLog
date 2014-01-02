@@ -1,0 +1,26 @@
+<template name="metadata">
+	<div class="btn-meta-group btn-group">
+		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" data-toggle="dropdown">
+			{{#isolate}}{{metacat}}{{/isolate}}<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#">new</a></li>
+			<li class="divider"></li>
+			{{#each meta}}
+				<li class="metacat" ><a href="#" id="{{label}}">{{label}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="btn-meta-group btn-group">
+		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" {{activity}} data-toggle="dropdown">
+			{{metaact}}<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#">new</a></li>
+			<li class="divider"></li>
+			{{#each activities}}
+				<li class="metaact" ><a href="#" id="{{label}}">{{label}}</a></li>
+			{{/each}}
+		</ul>
+</div>
+</template>

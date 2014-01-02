@@ -1,0 +1,47 @@
+<template name="timedata">
+	
+	{{#if timechoice.duration}}
+		{{> timelength}}
+	{{/if}}
+	{{#if timechoice.actual}}
+		{{> timeactual}}
+	{{/if}}
+	{{#if timechoice.simple}}
+		{{> timesimple}}
+	{{/if}}
+	
+</template>
+
+<template name="timelength">
+	<div id="newdata_time_length" data-ref="time_length" class="form-group date-form-group">
+	    <div class="col-sm-4 input-group-sm">
+
+	      <input type="number" class="form-control" min="0" step="5" id="total-length" placeholder="minutes" required="true">
+	      
+	    </div>
+
+	</div>
+</template>
+
+<template name="timeactual">
+	<div id="newdata_time_actual" data-ref="time_actual" class="form-group time date-form-group">
+	    <div class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
+			<input id="timepicker1" type="text" class="form-control time-input" data-minute-step="5">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            <!-- glyphicon glyphicon-time -->
+	      <!-- <input type="time" class="form-control" id="start-time" required="true" value="12:00"> -->
+	    </div>
+	    <label id="end-time-label" class="col-sm-1 control-label" for="total-length">to</label>
+	    <div class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
+	      	<input id="timepicker2" type="text" class="form-control time-input" data-minute-step="5">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+	    </div>
+
+	</div>
+</template>
+
+<template name="timesimple">
+	<div id="newdata_time_simplelog" data-ref="time_simplelog" class="form-group date-form-group">
+		<label class="control-label" >action only - no time/duration logged</label>
+	</div>
+</template>

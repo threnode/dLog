@@ -1,0 +1,35 @@
+<template name="datedata">
+
+	{{#if datechoice.today}}
+		{{> datetoday}}
+	{{/if}}
+	{{#if datechoice.yesterday}}
+		{{> dateyesterday}}
+	{{/if}}
+	{{#if datechoice.selectdate}}
+		{{> dateselect}}
+	{{/if}}
+
+</template>
+
+
+<template name="datetoday">
+	<div id="newdata_date_today" data-ref="date_today" class="form-group date-form-group">
+    	<label class="col-sm-10 control-label date" >{{today}}</label>
+	</div>
+</template>
+<template name="dateyesterday">
+	 <div id="newdata_date_yesterday" data-ref="date_yesterday" class="form-group date-form-group">
+    	<label class="col-sm-10 control-label date" >{{yesterday}}</label>
+	</div>
+</template>
+<template name="dateselect">
+	<div id="newdata_date_other" data-ref="date_other" class="form-group date-form-group">
+    	 <div class="col-sm-5 input-group-sm">
+    	 	<input type="date" class="form-control" value="{{defaultdate}}">
+    	 </div>
+	</div>
+</template>
+
+
+

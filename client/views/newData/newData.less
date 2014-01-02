@@ -4,6 +4,18 @@
 		color: #333;
 	}
 	.temporal {
+		.time-input {
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+		}
+		.bootstrap-timepicker-widget {
+			input {
+				border: 1px solid white;
+				height: 30px;
+				color: white;
+				background-color: #428bca;
+			}
+		}
 		label:not(.btn) {
 		padding: 8px 0 0 0;
 		font-weight: normal;
@@ -18,6 +30,9 @@
 				width: 80px;
 				text-align: center;
 			}
+		}
+		#newdata_time_actual > div, #newdata_time_actual > label {
+			float: left;
 		}
 		.form-group {
 			width: 350px;
