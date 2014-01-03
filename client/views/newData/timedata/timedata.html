@@ -25,15 +25,15 @@
 
 <template name="timeactual">
 	<div id="newdata_time_actual" data-ref="time_actual" class="form-group time date-form-group">
-	    <div class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
-			<input id="timepicker1" type="text" class="form-control time-input" data-minute-step="5">
+	    <div id="strtimegroup" class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
+			<input id="strtime" type="text" class="form-control time-input" data-minute-step="5" showMeridian="false" defaultTime="false">
 			<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
             <!-- glyphicon glyphicon-time -->
 	      <!-- <input type="time" class="form-control" id="start-time" required="true" value="12:00"> -->
 	    </div>
 	    <label id="end-time-label" class="col-sm-1 control-label" for="total-length">to</label>
-	    <div class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
-	      	<input id="timepicker2" type="text" class="form-control time-input" data-minute-step="5">
+	    <div id="endtimegroup" class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
+	      	<input id="endtime" type="text" class="form-control time-input" data-minute-step="5" showMeridian="false" defaultTime="false">
 			<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 	    </div>
 

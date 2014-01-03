@@ -19,15 +19,17 @@ Template.metadata.helpers
 Template.metadata.events =
 	#meta dropdown selection
 	'click .metacat' : (event) ->
-		console.log event.target.id
 		newDataFormState.metacat = 'Category: ' + event.target.id
+		newDataFormState.metaact = 'Select an activity'
 		newDataFormState.activity = ''
 		newDataFormState.activities = (Activities.find({'label':event.target.id}).fetch())[0].children
-		console.log newDataFormState.activities
 		Session.set 'newdataForm', newDataFormState
+		NewDLog.metadata.category = event.target.id
 	'click .metaact' : (event) ->
-		console.log event.target.id
 		newDataFormState.metaact = 'Activity: ' + event.target.id
 		Session.set 'newdataForm', newDataFormState
+		NewDLog.metadata.activity = event.target.id
+	'click .newmetabtn' : (event) ->
 		console.log newDataFormState
+		console.log event.target.dataset.newtype
 		

@@ -3,8 +3,8 @@
 		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" data-toggle="dropdown">
 			{{#isolate}}{{metacat}}{{/isolate}}<span class="caret"></span>
 		</button>
-		<ul class="dropdown-menu" role="menu">
-			<li><a href="#">new</a></li>
+		<ul class="dropdown-menu dropdown-menu-arrow" role="menu">
+			<li class="newmetabtn"><a href="#" data-newtype="category">new</a></li>
 			<li class="divider"></li>
 			{{#each meta}}
 				<li class="metacat" ><a href="#" id="{{label}}">{{label}}</a></li>
@@ -15,8 +15,8 @@
 		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" {{activity}} data-toggle="dropdown">
 			{{metaact}}<span class="caret"></span>
 		</button>
-		<ul class="dropdown-menu" role="menu">
-			<li><a href="#">new</a></li>
+		<ul class="dropdown-menu dropdown-menu-arrow" role="menu">
+			<li class="newmetabtn"><a href="#" data-category="{{metacat}}" data-newtype="activity">new</a></li>
 			<li class="divider"></li>
 			{{#each activities}}
 				<li class="metaact" ><a href="#" id="{{label}}">{{label}}</a></li>
