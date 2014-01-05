@@ -1,28 +1,15 @@
 
-#general page set-up
-Template.newData.rendered = ->
-	($ ".date-btn").button
-	($ ".dropdown-toggle").dropdown()
+settings =
+	summarypanelID: '#new-data-summary-panel'
 
 
-@NewDLog =
-	logInfo :
-		user: null
-		inputTime: null
-		inputLocation:
-			exists: false
-			latitude: null
-			longitude: null
-	timedata:
-		timetype: 'length'
-		length: null
-		strtime: null
-		endtime: null
-	datedata: null
-	metadata:
-		category: null
-		activity: null
 
+
+
+
+#HELPER FUNCTIONS
+
+#get location - lat and long
 @getLocation = ->
   if navigator.geolocation
     navigator.geolocation.getCurrentPosition showPosition
@@ -33,43 +20,37 @@ showPosition = (position) ->
   NewDLog.logInfo.inputLocation.longitude = position.coords.longitude
   NewDLog.logInfo.inputLocation.exists = true
 
-@newDataFormState =
-	metacat: 'Select a catagory'
-	metaact: 'Select an activity'
-	activity: 'disabled'
-	timechoice: 
-		duration: 1
-		actual: 0
-		simple: 0
-	datechoice : 
-		today: 1
-		yesterday: 0
-		selectdate: 0
-	setup: true
-
-Session.set 'newdataForm', newDataFormState
-
-
+#get the total duration in minutes between two different times
 getTimeDifference = (str, end) ->
 	difference = moment.utc(moment(end, "HH:mm").diff(moment(str, "HH:mm"))).format "HH:mm"
 	difference = difference.split ':'
 	(+difference[0]) * 60 + (+difference[1]) + ''
-# var now  = "04/09/2013 15:00:00";
-# var then = "04/09/2013 14:20:30";
 
-	
+
+#set all values to 0 in a series of key value pairs	
 settozero = (value, key) ->
 	newDataFormState[event.target.dataset.type][key] = 0
 
 
+
 #event handler
 Template.newData.events =
-	#date selecction types
+	#date time type buttons
+	#Date options: quick today/yesterday for dates
+	#Time options: length/actual or no time log
 	'click .timedate-btn' : (event) ->
-		_.each newDataFormState[event.target.dataset.type],  settozero
-		newDataFormState[event.target.dataset.type][event.target.dataset.selection] = 1
+		console.log event
+
+		sectiontype = event.target.dataset.type #date ot time
+		selectedoption = event.target.dataset.selection
+		newDataFormState.newmetaSummary[sectiontype] = selectedoption
+		_.each newDataFormState[sectiontype],  settozero
+		newDataFormState[sectiontype][selectedoption] = 1
 		Session.set 'newdataForm', newDataFormState
-		(NewDLog.timedata.timetype =  event.target.dataset.selection) if event.target.dataset.type is 'timechoice'
+		#only need to track time as date is for quick today/yesterday selection hence no need to track
+		(NewDLog.timedata.timetype =  selectedoption) if sectiontype is 'timechoice' 
+
+	#Save log entry to collection	
 	'click #save-log' : (event) ->
 		NewDLog.logInfo.inputTime = moment().format 'X' 
 		NewDLog.logInfo.user = Meteor.userId()

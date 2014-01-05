@@ -1,26 +1,58 @@
 <template name="metadata">
+
+
+	<!-- Category drop down menu -->
 	<div class="btn-meta-group btn-group">
 		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" data-toggle="dropdown">
-			{{#isolate}}{{metacat}}{{/isolate}}<span class="caret"></span>
+			{{{CategoryDropdownText}}}<span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu dropdown-menu-arrow" role="menu">
-			<li class="newmetabtn"><a href="#" data-newtype="category">new</a></li>
+			<li ><div class="open-modal-to-add-new-meta-tag" data-newtype="category" data-toggle="modal" data-target="#new-meta-data-modal"></div><a href="#"><span class="glyphicon glyphicon-plus"> <span>new</span></a></li>
 			<li class="divider"></li>
 			{{#each meta}}
-				<li class="metacat" ><a href="#" id="{{label}}">{{label}}</a></li>
+				<li><div class="category-selection" id="{{label}}"></div><a data-target="#"  class="metacat" ><span class="glyphicon glyphicon-tags" > <span>{{label}}</span></a></li>
 			{{/each}}
 		</ul>
 	</div>
+
+
+	<!-- Activity drop down menu -->
 	<div class="btn-meta-group btn-group">
-		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" {{activity}} data-toggle="dropdown">
-			{{metaact}}<span class="caret"></span>
+		<button type="button" class="btn btn-meta-dropdown btn-default  btn-sm dropdown-toggle" {{#if ActivityDropdownDisabled}}disabled{{/if}} data-toggle="dropdown">
+			{{{ActivityDropdownText}}}<span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu dropdown-menu-arrow" role="menu">
-			<li class="newmetabtn"><a href="#" data-category="{{metacat}}" data-newtype="activity">new</a></li>
+			<li><div class="open-modal-to-add-new-meta-tag" data-newtype="activity" data-toggle="modal" data-target="#new-meta-data-modal"></div><a href="#"><span class="glyphicon glyphicon-plus">  <span>new</span></a></li>
 			<li class="divider"></li>
-			{{#each activities}}
-				<li class="metaact" ><a href="#" id="{{label}}">{{label}}</a></li>
+			{{#each ListofActivities}}
+			<li><div class="activity-selection" id="{{label}}"></div><a data-target="#"><span class="glyphicon glyphicon-tags">  <span> {{label}}</span></a></li>
 			{{/each}}
 		</ul>
-</div>
+	</div>
+
+
+
+
+
+
+<!-- Modal -->
+	<div class="modal fade" id="new-meta-data-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-plus"></span>  <span class="title">Add new {{{NewMetaTagModalHeaderText}}}</span></h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+			    <input type="text" class="form-control" id="new-meta-tag-input"  placeholder="Enter {{CreateNewMetaTagOfType}}">
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button id="cancel-new-meta-data" type="button" class="btn btn-default cancel-newmetabtn" data-dismiss="modal">cancel</button>
+	        <button id="save-new-meta-data" type="button" class="btn btn-primary save-newmetabtn">add</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
 </template>

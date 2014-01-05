@@ -1,20 +1,13 @@
 
 
-#template variables
-Template.datetoday.helpers 
+
+Template.datedata.helpers
+	datechoice: -> (Session.get 'newdataForm').datechoice
+	defaultdate: (moment().subtract "days", 2).format "YYYY-MM-DD"
+	yesterday: (moment().subtract "days", 1).format "dddd, MMMM Do YYYY"
 	today: moment().format "dddd, MMMM Do YYYY"
 
-#template variables
-Template.dateyesterday.helpers 
-	yesterday: (moment().subtract "days", 1).format "dddd, MMMM Do YYYY"
-
-Template.dateselect.helpers 
-	defaultdate: (moment().subtract "days", 2).format "YYYY-MM-DD"
-
-Template.datedata.datechoice = 
-	-> (Session.get 'newdataForm').datechoice
-
-Template.dateselect.events =
+Template.datedata.events =
 	#meta dropdown selection
 	'blur #dateselector' : (event) ->
 		console.log event.target.value

@@ -1,4 +1,79 @@
 #newData {
+	position: relative;
+
+	#new-data-summary-panel {
+		
+		// transition: opacity 0.5s ease-in-out, top 0.5s ease-out;
+		box-shadow: 2px 3px 2px 1px #999;
+		letter-spacing: 1.5px;
+		top: 115px;
+		right: 80px;
+		position: fixed;
+		width: 325px;
+		z-index: 500;
+		background-color: #000;
+		color: #ccc;
+		opacity: 0.55;
+		border-radius: 5px;
+		border-width: 0;
+		.panel-heading {
+			border-radius:  5px 5px 0 0;
+			background-color: #000;
+			border-bottom-color: #363636;
+			.panel-title {
+				font-weight: normal;
+				font-size: 14px;
+				color: #ccc;
+
+			}
+
+		}
+		.panel-body {
+			font-size: 12px;
+			h5 {
+				padding-bottom: 15px;
+				font-weight: bold;
+			}
+			ul {
+				padding-bottom: 15px;
+				height: 83px;
+			}
+			.primarydetail {
+				color: #428bca;
+			}
+			
+		}
+	}
+
+	.summary-transition {
+			opacity: 0.55!important;
+			top: 115px!important;
+		}
+
+	div.category-selection, div.activity-selection, div.open-modal-to-add-new-meta-tag {
+		float: right;
+		position: absolute;
+		width: 100%;
+		height: 28px;
+		z-index: 10;
+		cursor: pointer;
+
+	}
+	#new-meta-data-modal .glyphicon {
+		color: #999;
+		font-size: 16px;
+		padding-right: 25px;
+		padding-left: 5px;
+	}
+	div.category-selection:hover +  a, div.activity-selection:hover +  a, div.open-modal-to-add-new-meta-tag:hover + a {
+		background-color: #888;
+	}
+	div.open-modal-to-add-new-meta-tag:hover + a {
+		background-color: #428bca;
+	}
+	div.category-selection:hover +  a span span, div.activity-selection:hover +  a span span, div.open-modal-to-add-new-meta-tag:hover +  a span span, div.open-modal-to-add-new-meta-tag:hover +  a span{
+		color: white;
+	}
 	h1,fieldset {
 		padding-bottom: 30px;
 		color: #333;
@@ -51,6 +126,10 @@
 		}
 	}
 	.btn-meta-group button {
+		color: #666;
+		strong {
+			color: #000;
+		}
 		
 	}
 	.btn-meta-dropdown {
@@ -61,14 +140,52 @@
 			float: right;
 			margin-top: 7px;
 		}
+		
 	}
+	ul.dropdown-menu {
+		padding-top: 10px;
+		a:hover span span {
+		color: #fff;
+		}
+		a {
+			padding-bottom: 5px;
+		}
+		.glyphicon {
+				color: #ccc;
+				font-size: 10px;
+				line-height: 12px;
+				padding-top: 2px;
+				span {
+					color: #333;
+					font-size: 14px;
+				}
+		}
+		a:hover .glyphicon-plus {
+			color: #fff;
+		}
+	}
+	
+
 	.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
 		background-color: #888;
 		color: white;
 	}
-	.dropdown-menu > li.newmetabtn > a:hover, .dropdown-menu > li.newmetabtn > a:focus {
+	.dropdown-menu > li.open-modal-to-add-new-meta-tag > a:hover, .dropdown-menu > li.open-modal-to-add-new-meta-tag > a:focus {
 		background-color: #428bca;
 		color: white;
+	}
+	.modal-title {
+		font-weight: normal;
+		color: #666;
+		strong {
+			color: #000;
+		}
+		strong.cat {
+			color: #428bca;
+		}
+	}
+	.cat {
+		color: #428bca;
 	}
 	#save {
 		margin-top: 25px;

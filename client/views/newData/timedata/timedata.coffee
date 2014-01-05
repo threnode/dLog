@@ -14,8 +14,13 @@ Template.timedata.rendered = ->
 
 
 
-Template.timelength.events =
-	#meta dropdown selection
-	'blur #total-length' : (event) ->
+Template.timedata.events =
+
+
+	'keyup, blur, mouseup #total-length' : (event) ->
 		NewDLog.timedata.length = event.target.value
+		duration = NewDLog.timedata.length ? '0'
+		newDataFormState.newmetaSummary.duration = duration + ' mins'
+		Session.set 'newdataForm', newDataFormState
+		
 
