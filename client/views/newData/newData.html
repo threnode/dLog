@@ -7,43 +7,7 @@
 
 		<form id="new-data-form" class="form-inline">
 
-			<fieldset id="newdata_time" class="temporal">
-    			<legend>Time</legend>
-
-			    <div id="time-selection" class="btn-group btn-group-sm " data-toggle="buttons">
-				    <label class="btn btn-default timedate-btn active" data-type="timechoice" data-selection="duration" id="time_length" name="Time by length">
-				    	<input type="radio"> length
-					</label>
-					<label class="btn btn-default timedate-btn" data-type="timechoice" data-selection="actual" id="time_actual" name="Time by actual">
-						<input type="radio"> actual
-					</label>
-					<label class="btn btn-default timedate-btn" data-type="timechoice" data-selection="simple" id="time_simplelog" name="Simple log">
-						<input type="radio"> simple log
-					</label>
-			    </div>
-
-			    {{> timedata }}
-    
-			</fieldset>
-
-			<fieldset id="newdata_date" class="temporal">
-			    <legend>Date</legend>
-
-			    <div id="date-selection" class="btn-group btn-group-sm " data-toggle="buttons">
-				    <label class="btn btn-default timedate-btn active" data-type="datechoice" data-selection="today" id="date_today" name="Today's date">
-				    	<input type="radio"> today
-					</label>
-					<label class="btn btn-default timedate-btn" data-type="datechoice" data-selection="yesterday" id="date_yesterday" name="Yesterday">
-						<input type="radio"> yesterday
-					</label>
-					<label class="btn btn-default timedate-btn" data-type="datechoice" data-selection="selectdate" id="date_other" name="Other">
-						<input type="radio"> select date
-					</label>
-			    </div>
-
-			    {{> datedata }}
-
-			</fieldset>
+			{{> time_and_date}}
 
 			<fieldset id="newdata_details">
 				<legend>Metadata</legend>
@@ -60,6 +24,6 @@
 		
 
 	</div>
-	
+
 </template>
 

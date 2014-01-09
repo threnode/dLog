@@ -1,3 +1,10 @@
+#date formats via moment
+@dateformats =
+	verbose: "dddd, MMMM Do YYYY"
+	short: "MM-DD-YYYY"
+	default: "YYYY-MM-DD"
+	timestamp: 'X'
+
 #object model for Metadata collection
 @NewMetaData =
 	label: null
@@ -5,7 +12,6 @@
 	weight: null
 	created: null
 	lastupdated: null
-	user: null
 
 #object model for Activity collection
 @NewDLog =
@@ -29,23 +35,20 @@
 
 #New Log form state tracking and defaults
 @newDataFormState =
-	newmetaSummary:
-		duration: '0 mins'
-		timechoice: 'length'
-		datechoice: 'today'
-		verbosedate: moment().format "dddd, MMMM Do YYYY"
-		shortdate:  moment().format "MM-DD-YYYY"
+	duration: '0 mins'
+	timechoice: 'length'
+	datechoice: 'today'
+	verbosedate: moment().format "dddd, MMMM Do YYYY"
+	shortdate:  moment().format "MM-DD-YYYY"
+	srttime: '09:00'
+	endtime: '09:00'
 	CategoryDropdownText: 'Select a catagory'
 	ActivityDropdownText: 'Select an activity'
 	ActivityDropdownDisabled: true
-	timechoice: 
-		duration: 1
-		actual: 0
-		simple: 0
-	datechoice : 
-		today: 1
-		yesterday: 0
-		selectdate: 0
 	setup: true
+
+@newDataFormStateDefaults = _.clone newDataFormState
+
+
 #set defaults
 Session.set 'newdataForm', newDataFormState

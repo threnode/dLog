@@ -1,29 +1,32 @@
 <template name="summarypanel">
-	<div id="new-data-summary-panel" class="panel panel-default visible-md">
+	<div id="new-data-summary-panel" class="well well-lg visible-md">
 		<div class="panel-heading">
 			<h3 class="panel-title">Log summary</h3>
 		</div>
 		<div class="panel-body">
 
-			<h5 class="primarydetail">{{#if newmetaSummary.category}}{{newmetaSummary.category}}{{#if newmetaSummary.activity}}, {{/if}}{{newmetaSummary.activity}}{{else}}-{{/if}}</h5>
-			<h6>Time: {{#if newmetaSummary.duration}}<strong class="primarydetail">{{newmetaSummary.duration}}</strong>{{/if}}</h6>
-			<ul>
-				<li>Record type: <strong>{{newmetaSummary.timechoice}}</strong></li>
-				{{#if srt}}<ul>
-			    	<li>Start: <strong>{{newmetaSummary.srt}}</strong></li>
-			    	<li>End: <strong>{{newmetaSummary.end}}</strong></li>
+			<div>
+				<h6>Time: <strong class="primarydetail">{{#if hasDuration}}{{duration}}{{else}}simple log (no duration){{/if}}</strong></h6>
+				{{#if hasDuration}}<ul>
+					<li>Record type: <strong>{{timechoice}}</strong></li>
+					{{#if isActual}}<ul>
+				    	<li>Start: <strong>{{srttime}}</strong></li>
+				    	<li>End: <strong>{{endtime}}</strong></li>
+					</ul>{{/if}}
 				</ul>{{/if}}
-			</ul>
-
-			<h6>Date: <strong class="primarydetail">{{newmetaSummary.verbosedate}}</strong></h6>
-			<ul>
-				<li>Record type: <strong>{{newmetaSummary.datechoice}}</strong></li>
-				<ul>
-			    	<li>Actual: <strong>{{newmetaSummary.shortdate}}</strong></li>
-				</ul>
-			</ul>
-
-
 			</div>
+			<div>
+				<h6>Date: <strong class="primarydetail">{{verbosedate}}</strong></h6>
+				<ul>
+					<li>Record type: <strong>{{datechoice}}</strong></li>
+					<ul>
+				    	<li>Actual: <strong>{{shortdate}}</strong></li>
+					</ul>
+				</ul>
+			</div>
+			<div>
+				<h5 class="primarydetail">{{#if hasCategory}}{{category}}{{#if hasActivity}}, {{/if}}{{activity}}{{else}}-{{/if}}</h5>
+			</div>
+		</div>
 	</div>
 </template>

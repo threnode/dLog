@@ -1,0 +1,84 @@
+<template name="time_and_date">
+	
+	
+	<fieldset id="newdata_time_and_date" class="temporal">
+		<legend>Time</legend>
+
+	    <div id="time-selection" class="btn-group btn-group-sm " data-toggle="buttons">
+		    <label class="btn btn-default timedate-btn active" data-type="timechoice" data-selection="length" id="time_length" name="Time by length" data-toggle="button">
+		    	<input type="radio" name="timechoice" id="length"> length
+			</label>
+			<label class="btn btn-default timedate-btn" data-type="timechoice" data-selection="actual" id="time_actual" name="Time by actual" data-toggle="button">
+				<input type="radio" name="timechoice" id="actual"> actual
+			</label>
+			<label class="btn btn-default timedate-btn" data-type="timechoice" data-selection="simple" id="time_simplelog" name="Simple log" data-toggle="button">
+				<input type="radio" name="timechoice" id="simple"> simple log
+			</label>
+	    </div>
+
+
+	    <div id="newdata_time" class="form-group date-form-group">
+	    {{#isolate}}
+	    {{#if timechoiceIsDuration}}
+		    <div class="col-sm-4 input-group-sm">
+
+		      <input type="number" class="form-control" min="0" step="5" id="total-length" placeholder="minutes" required="true">
+		      
+		    </div>
+		{{/if}}
+		{{#if timechoiceIsActual}}
+			<div id="newdata_time_actual">
+			    <div id="strtimegroup" class="col-sm-4 input-group input-group-sm bootstrap-timepicker time" >
+					<input id="srttime" type="text" class="form-control time-input" data-minute-step="5" showMeridian="false" defaultTime="false">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		            <!-- glyphicon glyphicon-time -->
+			      <!-- <input type="time" class="form-control" id="start-time" required="true" value="12:00"> -->
+			    </div>
+			    <label id="end-time-label" class="col-sm-1 control-label" for="total-length">to</label>
+			    <div id="endtimegroup" class="col-sm-4 input-group input-group-sm bootstrap-timepicker" >
+			      	<input id="endtime" type="text" class="form-control time-input" data-minute-step="5" showMeridian="false" defaultTime="false">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+			    </div>
+			</div>
+		{{/if}}
+		{{#if timechoiceIsSimple}}
+			<label class="control-label" >action only - no time/duration logged</label>
+		{{/if}}
+		{{/isolate}}
+		</div>
+
+	</fieldset>
+
+	<fieldset id="newdata_date" class="temporal">
+	    <legend>Date</legend>
+
+	    <div id="date-selection" class="btn-group btn-group-sm " data-toggle="buttons">
+		    <label class="btn btn-default timedate-btn active" data-type="datechoice" data-selection="today" id="date_today" name="Today's date">
+		    	<input type="radio"> today
+			</label>
+			<label class="btn btn-default timedate-btn" data-type="datechoice" data-selection="yesterday" id="date_yesterday" name="Yesterday">
+				<input type="radio"> yesterday
+			</label>
+			<label class="btn btn-default timedate-btn" data-type="datechoice" data-selection="selectdate" id="date_other" name="Other">
+				<input type="radio"> select date
+			</label>
+	    </div>
+
+	    {{#isolate}}
+	    <div id="newdata_date" class="form-group date-form-group">
+	    {{#if datechoiceIsSelectDate}}
+    		<div class="col-sm-5 input-group-sm">
+	    	 	<input id="dateselector" type="date" class="form-control" value="{{defaultdate}}">
+	    	 </div>
+    	{{else}}
+    		<label class="col-sm-10 control-label date" >{{date}}</label>
+    	{{/if}}
+    	{{/isolate}}
+		</div>
+		
+
+	</fieldset>
+
+
+</template>
+

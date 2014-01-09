@@ -1,29 +1,27 @@
+.blur {
+	-webkit-filter: blur(10px);
+}
 #newData {
 	position: relative;
 
 	#new-data-summary-panel {
 		
 		// transition: opacity 0.5s ease-in-out, top 0.5s ease-out;
-		box-shadow: 2px 3px 2px 1px #999;
+		// box-shadow: 2px 2px 2px 1px #999;
+		margin-right: 50px;
 		letter-spacing: 1.5px;
-		top: 115px;
-		right: 80px;
-		position: fixed;
-		width: 325px;
+		top: 155px;
+		right: 0;
+		position: absolute;
+		width: 320px;
+		padding: 10px;
 		z-index: 500;
-		background-color: #000;
-		color: #ccc;
-		opacity: 0.55;
-		border-radius: 5px;
-		border-width: 0;
 		.panel-heading {
-			border-radius:  5px 5px 0 0;
-			background-color: #000;
-			border-bottom-color: #363636;
 			.panel-title {
 				font-weight: normal;
 				font-size: 14px;
-				color: #ccc;
+				color: #333;
+				text-align: right;
 
 			}
 
@@ -31,12 +29,10 @@
 		.panel-body {
 			font-size: 12px;
 			h5 {
-				padding-bottom: 15px;
 				font-weight: bold;
 			}
-			ul {
-				padding-bottom: 15px;
-				height: 83px;
+			div {
+				height: 100px;
 			}
 			.primarydetail {
 				color: #428bca;
