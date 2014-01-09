@@ -6,6 +6,6 @@ Template.nav.rendered = ->
 
 Template.newData.rendered = ->
 	#Do we still need this?
-	($ ".date-btn").button
+	# ($ ".date-btn").button
 	#set up the metadat dropdowns via bootstrap js
 	($ ".dropdown-toggle").dropdown()

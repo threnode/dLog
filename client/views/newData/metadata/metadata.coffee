@@ -18,26 +18,23 @@ Template.metadata.events =
 	#Select a category from the dropdown
 	'click .category-selection ' : (event) ->
 		#set template vars
-		category = event.target.id
-		newDataFormState.CategoryDropdownText = 'Category: <strong>' + category + '</strong>'
-		newDataFormState.ActivityDropdownText = 'Select an activity'
+		newDataFormState.category = event.target.id
+		newDataFormState.CategoryDropdownText = 'Category: <strong>' + newDataFormState.category + '</strong>'
+		newDataFormState.ActivityDropdownText = newDataFormStateDefaults.ActivityDropdownText
+		newDataFormState.activity = undefined
 		newDataFormState.ActivityDropdownDisabled = false
-		newDataFormState.ListofActivities = (Activities.find({'label':category}).fetch())[0].children
-		newDataFormState.newmetaSummary.category = category
+		newDataFormState.ListofActivities = (Activities.find({'label':newDataFormState.category}).fetch())[0].children
 		Session.set 'newdataForm', newDataFormState
-		#set cat value for new data log entry
-		NewDLog.metadata.category = category
+
 		
 
 	#Select an activity from the dropdown
 	'click .activity-selection' : (event) ->
 		#set template vars
-		activity = event.target.id
-		newDataFormState.newmetaSummary.activity = activity
-		newDataFormState.ActivityDropdownText = 'Activity: <strong>' + activity  + '</strong>'
+		newDataFormState.activity = event.target.id
+		newDataFormState.ActivityDropdownText = 'Activity: <strong>' + newDataFormState.activity  + '</strong>'
 		Session.set 'newdataForm', newDataFormState
-		#set activity value for new data log entry
-		NewDLog.metadata.activity = activity
+
 
 
 	#Open modal to create new metadata cat/activty tag	
@@ -46,32 +43,32 @@ Template.metadata.events =
 		@newmeta = _.clone NewMetaData
 		newmeta.type = event.target.dataset.newtype
 		##set template vars
-		newDataFormState.CreateNewMetaTagOfType = event.target.dataset.newtype
+		newDataFormState.CreateNewMetaTagOfType = newmeta.type
 		#assemble modal header text
-		if (event.target.dataset.newtype is 'activity')
-			newHeader = '<strong>' + event.target.dataset.newtype + '</strong> to <strong class="cat">' + NewDLog.metadata.category + '</strong>'
+		if (newmeta.type is 'activity')
+			newHeader = '<strong>' + newmeta.type + '</strong> to <strong class="cat">' + newDataFormState.category + '</strong>'
 		else
-			newHeader = '<strong class="cat">' + event.target.dataset.newtype + '</strong>'
+			newHeader = '<strong class="cat">' + newmeta.type + '</strong>'
 		newDataFormState.NewMetaTagModalHeaderText = newHeader
 		Session.set 'newdataForm', newDataFormState
 
 
 
 	#save new/updated meta data	
-	'click #save-new-meta-data' : (event) ->
-		newmeta.label = (this.find(settings.newMetaInputField)).val()
+	'click #save-new-meta-data' : (event, tmp) ->
+		newmeta.label = ($ '#new-meta-tag-input').val()
 		newmeta.created = moment().format 'X'
 		if newmeta.type isnt 'category' 
-			delete newmeta.user
 			delete newmeta.type
 			newDataFormState.ActivityDropdownText = 'Activity: <strong>' + newmeta.label  + '</strong>'
-			doc_to_update = Activities.findOne {label: NewDLog.metadata.category}
+			doc_to_update = Activities.findOne {label: newDataFormState.category}
 			Activities.update {_id: doc_to_update._id}, {$set: {lastupdated: newmeta.created}, $push: {children: newmeta}} 
-			newDataFormState.ListofActivities = (Activities.find({'label':NewDLog.metadata.category}).fetch())[0].children
+			newDataFormState.ListofActivities = (Activities.find({'label':newDataFormState.category}).fetch())[0].children
+			newDataFormState.activity = newmeta.label
 		else
 			newmeta.user = Meteor.userId()
 			delete newmeta.type
-			newDataFormState.ActivityDropdownText = 'Select an activity'
+			newDataFormState.ActivityDropdownText = newDataFormStateDefaults.ActivityDropdownText
 			newDataFormState.ActivityDropdownDisabled = false
 			NewDLog.metadata.category = newmeta.label
 			newDataFormState.CategoryDropdownText = 'Category: <strong>' + newmeta.label + '</strong>'
@@ -79,10 +76,10 @@ Template.metadata.events =
 		delete newmeta
 		$('#new-meta-data-modal').modal 'hide'
 		Session.set 'newdataForm', newDataFormState
-		$(this.find(settings.newMetaInputField)).val()
+		($ '#new-meta-tag-input').val('')
 
 	'click #cancel-new-meta-data' : (event) ->
 		delete newmeta
-		$(this.find(settings.newMetaInputField)).val()
+		($ '#new-meta-tag-input').val('')
 
 
